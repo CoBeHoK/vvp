@@ -1,1 +1,1 @@
-BEGIN Ch1 {ENDDDDDD!!!!:=}   := {SECOND COMMENT!}Ch2         ;          WRITE{BEGIN END}(F1,   '             BEGIN         END')             END.
+BEGIN {ENDDDDDD!!!!:=}Ch1    := Ch2         ;      {SECOND COMMENT!}    WRITE(F1,   '             BEGIN         END')             END. {BEGIN END}

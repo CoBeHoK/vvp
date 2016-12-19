@@ -1,7 +1,6 @@
 PROGRAM StringFormater(INPUT, OUTPUT);
 VAR
-  Ch, Ch1, Ch2, Ch3, Ch4, Ch5, Ch6, Ch7, Ch8, Comment, IsStarted, IsEnded: CHAR;
-  CommentFile: TEXT;
+  Ch, Ch1, Ch2, Ch3, Ch4, Ch5, Ch6, Ch7, Ch8, Comment, IsStarted, IsEnded, BeginPrinted: CHAR;
 PROCEDURE Init;
 BEGIN {Init}
   Ch := ' ';
@@ -15,32 +14,19 @@ BEGIN {Init}
   Ch8 := ' ';
   IsStarted := 'N';
   IsEnded := 'N';
-  ASSIGN(CommentFile, 'tmp');
-  REWRITE(CommentFile)
+  BeginPrinted := 'N';
 END;  {Init}
 PROCEDURE SkipComments;
 BEGIN {SkipComments}
-  WHILE Ch <> '}'
+  WHILE (Ch <> '}')
   DO
     BEGIN
-      WRITE(CommentFile, Ch);
+      WRITE(Ch);
       READ(Ch)
     END;
-  WRITE(CommentFile, Ch)
+  WRITE(Ch);
+  BeginPrinted := 'N'
 END; {SkipComments}
-PROCEDURE PrintComments;
-BEGIN {PrintComments}
-  CLOSE(CommentFile);
-  RESET(CommentFile);
-  WHILE NOT EOF(CommentFile)
-  DO
-    BEGIN
-      READ(CommentFile, Comment);
-      WRITE(Comment)
-    END;
-  CLOSE(CommentFile);
-  REWRITE(CommentFile)
-END; {PrintComments}
 PROCEDURE SkipStrings   ;
 BEGIN {SkipStrings}
   WRITE(Ch);
@@ -64,12 +50,16 @@ BEGIN {MoveWindow}
 END; {MoveWindow}
 PROCEDURE CheckProgramStart;
 BEGIN {CheckProgramStart}
-  IF (Ch1 = 'B') AND (Ch2 = 'E') AND (Ch3 = 'G') AND (Ch4 = 'I') AND (Ch5 = 'N') AND (Ch6 = ' ')
+  IF (Ch1 = 'B') AND (Ch2 = 'E') AND (Ch3 = 'G') AND (Ch4 = 'I') AND (Ch5 = 'N') AND ((Ch6 = ' ') OR (Ch6 = '{') OR (Ch6 = ';'))
   THEN
     BEGIN
       IsStarted := 'Y';
-      WRITELN;
-      WRITE('  ')
+      IF Ch6 = ';'
+      THEN
+        BEGIN
+          WRITELN;
+          WRITE('  ')
+        END
     END
 END; {CheckProgramStart}
 PROCEDURE CheckProgramEnd;
@@ -90,7 +80,6 @@ BEGIN {CheckProgramEnd}
               THEN
                 BEGIN
                   IsEnded := 'Y';
-                  PrintComments;
                   WRITELN;
                   WRITE('END');
                 END
@@ -120,7 +109,16 @@ BEGIN {StringFormater}
           CheckProgramEnd;
       IF (Ch <> ' ') AND (Ch <> ';') AND (Ch <> ',') AND (Ch <> '''') AND (Ch <> '{') AND (Ch <> ':') AND (Ch <> '=')
       THEN
-        WRITE(Ch);
+        BEGIN
+          IF (IsStarted = 'Y') AND (BeginPrinted = 'N') AND (IsEnded = 'N')
+          THEN
+            BEGIN
+              BeginPrinted := 'Y';
+              WRITELN;
+              WRITE('  ')
+            END;
+          WRITE(Ch)
+        END;
       IF Ch = '{'
       THEN
         SkipComments;
@@ -133,10 +131,15 @@ BEGIN {StringFormater}
       IF Ch = ';'
       THEN
         BEGIN
+          IF (IsStarted = 'Y') AND (BeginPrinted = 'N') AND (IsEnded = 'N')
+          THEN
+            BEGIN
+              BeginPrinted := 'Y';
+              WRITELN;
+              WRITE('  ')
+            END;
           WRITE(Ch);
-          PrintComments;
-          WRITELN;
-          WRITE('  ')
+          BeginPrinted := 'N'
         END;
       IF (Ch = ',') OR (Ch = '=')
       THEN
