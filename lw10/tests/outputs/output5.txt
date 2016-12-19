@@ -1,0 +1,4 @@
+BEGIN
+  WRITE(F1, '             BEGIN         END');
+  
+END.

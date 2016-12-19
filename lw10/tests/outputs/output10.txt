@@ -1,0 +1,4 @@
+BEGIN
+  Ch1 := Ch2;{ENDDDDDD!!!!:=}{SECOND COMMENT!}
+  WRITE(F1, '             BEGIN         END'){BEGIN END}
+END.

@@ -1,0 +1,119 @@
+
+C:\Arh\ps1\vvp\lw10>set test_program=10_2.exe 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 1 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input1.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output1.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT1.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 2 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input2.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output2.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT2.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 3 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input3.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output3.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT3.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 4 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input4.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output4.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT4.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 5 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input5.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output5.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT5.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 6 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input6.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output6.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT6.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 7 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input7.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output7.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT7.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 6 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input8.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output8.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT8.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 6 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input9.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output9.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT9.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>REM Start test 6 
+
+C:\Arh\ps1\vvp\lw10>10_2.exe  0<./tests/inputs/input10.txt 1>output.txt 
+
+C:\Arh\ps1\vvp\lw10>FC /B output.txt ./tests/outputs/output10.txt 
+Сравнение файлов output.txt и ./TESTS/OUTPUTS/OUTPUT10.TXT
+FC: различия не найдены
+
+
+C:\Arh\ps1\vvp\lw10>IF ERRORLEVEL 1 GOTO err 
+
+C:\Arh\ps1\vvp\lw10>ECHO Program testing succeeded :-) 
+Program testing succeeded :-)
+
+C:\Arh\ps1\vvp\lw10>del output.txt 
+
+C:\Arh\ps1\vvp\lw10>EXIT
