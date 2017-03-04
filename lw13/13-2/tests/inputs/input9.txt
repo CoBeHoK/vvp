@@ -1,0 +1,1 @@
+BEGIN Ch1    := Ch2         ;          WRITE{BEGIN END}(F1,   '             BEGIN         END')             END.
