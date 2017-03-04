@@ -5,10 +5,10 @@ VAR
 VAR
   Ch: CHAR;
 PROCEDURE Lexico(VAR F1, F2: TEXT; VAR Result: CHAR);
-{Result 0, 1, 2 если лексикографический порядок F1 =, <, > чем F2
-соответственно. Фактические параметры, соответствующие F1 и F2,
-должны быть различными}
-VAR
+{Result 0, 1, 2 Ґб«Ё «ҐЄбЁЄ®Ја дЁзҐбЄЁ© Ї®ап¤®Є F1 =, <, > зҐ¬ F2
+б®®вўҐвбвўҐ­­®. ” ЄвЁзҐбЄЁҐ Ї а ¬Ґвал, б®®вўҐвбвўгойЁҐ F1 Ё F2,
+¤®«¦­л Ўлвм а §«Ёз­л¬Ё}
+VAR 
   Ch1, Ch2: CHAR;
 BEGIN {Lexico}
   RESET(F1);
@@ -19,25 +19,19 @@ BEGIN {Lexico}
     BEGIN
       READ(F1, Ch1);
       READ(F2, Ch2);
-  IF EOLN(F1) AND (NOT EOLN(F2)) {дополнительная проверка, если F1 изначально пуст, а F2 - нет}
-  THEN
-    Result := '1';
-  IF EOLN(F2) AND (NOT EOLN(F1)) {дополнительная проверка, если F2 изначально пуст, a F1 - нет}
-  THEN 
-    Result := '2';      
-      IF (Ch1 < Ch2) OR (EOLN(F1)) {не было проверки что F1 короче F2}
-      THEN {Ch1 < Ch2 или F1 короче F2}
+      IF (Ch1 < Ch2) OR (EOLN(F1) AND (NOT EOLN(F2)))
+      THEN {Ch1 < Ch2 Ё«Ё F1 Є®а®зҐ F2}
         Result := '1'
       ELSE
-        IF (Ch1 > Ch2) OR (EOLN(F2)) {не было проверки что F2 короче F1} 
-        THEN {Ch1 > Ch2 или F2 короче F1}
-          Result := '2';
+        IF (Ch1 > Ch2) OR (EOLN(F2) AND (NOT EOLN(F1)))
+        THEN {Ch1 > Ch2 Ё«Ё F2 Є®а®зҐ F1}
+          Result := '2'
     END; {WHILE}
-  IF EOLN(F1) AND (NOT EOLN(F2)) {дополнительная проверка, если F1 изначально пуст, а F2 - нет}
+  IF (EOLN(F1) AND (NOT EOLN(F2))) {Ґб«Ё F1 Ё§­ з «м­® Їгбв}
   THEN
     Result := '1';
-  IF EOLN(F2) AND (NOT EOLN(F1)) {дополнительная проверка, если F2 изначально пуст, a F1 - нет}
-  THEN 
+  IF (EOLN(F2)) AND (NOT EOLN(F1)) {Ґб«Ё F2 Ё§­ з «м­® Їгбв}
+  THEN
     Result := '2';
 END; {Lexico}
 BEGIN
